@@ -1,0 +1,120 @@
+.doboz, .user-doboz, .feladatok-doboz, .haztartasok-doboz, .chat-doboz, .teljesitmenyek-doboz {
+    background: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    width: 500px;
+    height: auto;
+    margin: 20px auto;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+}
+
+.user-doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+}
+
+.teljesitmenyek-doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+}
+
+.feladatok-doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+}
+
+.haztartasok-doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+}
+
+.chat-doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    
+    z-index: -1;
+}
+
+.doboz:hover, .user-doboz:hover, .feladatok-doboz:hover, 
+.haztartasok-doboz:hover, .chat-doboz:hover, .teljesitmenyek-doboz:hover {
+    transform: translateY(-5px);
+    box-shadow: 
+        0 15px 40px rgba(0, 0, 0, 0.7),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+#centeralis-masik {
+    text-align: left;
+}
+
+#centeralis-user {
+    text-align: center;
+}
+
+.adat-doboz-user { /*Logikusabb lenne ha adat-doboz helyett input-doboz lenne? ebbe tartozik a felirat (pl jelszo) es az input ahova irod a jelszot.*/
+    text-align: center;
+}
+
+.adat-doboz-user {
+    padding-bottom: 20px;
+}
+
+.doboz-nev {
+    text-align: center;
+}
+
+.user-adat-ertekeles-doboz {
+    padding-bottom: 20px;
+}
+
+.adat-doboz { /*Logikusabb lenne ha adat-doboz helyett input-doboz lenne? ebbe tartozik a felirat (pl jelszo) es az input ahova irod a jelszot.*/
+    margin: 15px;
+    display: block;
+    text-align: left;
+}

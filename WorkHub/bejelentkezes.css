@@ -1,0 +1,128 @@
+.doboz {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: auto;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.doboz::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /*background: linear-gradient(135deg, rgba(125, 85, 236, 0.3), rgba(58, 44, 184, 0.3));*/ /*     szin    */
+    z-index: -1;
+}
+
+/*h1 class="felirat" --> felesleges*/
+
+#centeralis {
+    margin-right: 15%;
+    text-align: center;
+}
+
+.adat-doboz { /*Logikusabb lenne ha adat-doboz helyett input-doboz lenne? ebbe tartozik a felirat (pl jelszo) es az input ahova irod a jelszot.*/
+    margin: 15px;
+    display: block;
+    text-align: right;
+}
+
+.adat-mezo { /*Akkor mar ez meg input-mezo? ez specifikusan csak azt valtoztatja ahova irod az adatokat.*/
+    margin-right: 20px;
+    border-radius: 9px;
+    width: 150px;
+    height: 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+    color: white;
+    padding: 5px 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.adat-mezo::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.adat-mezo:focus {
+    outline: none;
+    border: 1px solid rgb(218, 185, 95);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.regisztralas-szoveg {
+    margin: 15px;
+    text-align: center;
+}
+
+.gomb-doboz {
+    text-align: center;
+    margin-top: 20px;
+    padding-bottom: 10px;
+}
+
+.gombok {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.gombok:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+#torol {
+    background: rgba(255, 6, 39, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#submit {
+    background: rgba(255, 187, 0, 0.267);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#torol:hover {
+    background: rgba(255, 6, 39, 0.4);
+}
+
+.hibas_bejelentkezes {
+    text-align: center;
+}
+
+.sikertelen {
+    color: rgb(250, 60, 60);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+    
+}
+
+.sikeres_bejelentkezes { /*Lowkey felesleges mert ugyse jelez vissza hogy sikeres csak atiranyit --> vagy csinalunk olyat hogy mielott atdob az inputok eltunnek (php) es successfull n stb es egy 2mp mulva iranyit at csak.*/
+    text-align: center;
+}
+
+.siker { /*Lowkey felesleges mert ugyse jelez vissza hogy sikeres csak atiranyit --> vagy csinalunk olyat hogy mielott atdob az inputok eltunnek (php) es successfull n stb es egy 2mp mulva iranyit at csak.*/
+    color: rgb(144, 238, 144);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+
+

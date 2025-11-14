@@ -1,0 +1,168 @@
+body {
+    background-color: #011502;
+}
+
+
+h1 {
+    text-align: center;
+    color: white;
+}
+
+.navbar ul {
+    background-color: #588C87;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;              
+    justify-content: center;   
+    align-items: center;        
+}
+
+
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar a:hover {
+    background-color: #244F4B;
+}
+
+
+.navbar2 ul {
+    background-color: #096C6C;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;              
+    justify-content: center;   
+    align-items: center;        
+}
+
+
+
+.navbar2 a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar2 a:hover {
+    background-color: #064747;
+}
+
+
+.navbar3 ul {
+    background-color: #759FBC;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;              
+    justify-content: center;   
+    align-items: center;        
+}
+
+
+
+.navbar3 a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar3 a:hover {
+    background-color: #1F5673;
+}
+
+.navbar4 ul {
+    background-color: #90BEDE;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;              
+    justify-content: center;   
+    align-items: center;        
+}
+
+
+
+.navbar4 a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar4 a:hover {
+    background-color: #90F3FF;
+}
+
+
+.navbar5 ul {
+    background-color: #6A7062;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;              
+    justify-content: center;   
+    align-items: center;        
+}
+
+
+
+.navbar5 a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar5 a:hover {
+    background-color: #3E442B;
+}
+
+.navbar6 ul {
+    background-color: #096C6C;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;              
+    justify-content: center;   
+    align-items: center;        
+}
+
+
+
+.navbar6 a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar6 a:hover {
+    background-color: #0E7C7B;
+}
+
+
+
+.footer {
+    background-color: #588C87;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}

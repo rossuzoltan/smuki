@@ -1,0 +1,77 @@
+CREATE TABLE IF NOT EXISTS felhasznalok (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) UNIQUE NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    jelszo_hash VARCHAR(255) NOT NULL,
+    vezetek_nev VARCHAR(100) NOT NULL,
+    kereszt_nev VARCHAR(100) NOT NULL,
+    profil_kep VARCHAR(500) NULL,
+    letrejott DATETIME DEFAULT CURRENT_TIMESTAMP,
+    is_active BOOLEAN DEFAULT TRUE
+);
+
+CREATE TABLE IF NOT EXISTS haztartas (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nev VARCHAR(255) NOT NULL,
+    leiras TEXT NULL,
+    keszitette INT NOT NULL,
+    letrejott DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (keszitette) REFERENCES felhasznalok(id)
+);
+
+CREATE TABLE IF NOT EXISTS haztartas_tagok (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    haztartas_id INT NOT NULL,
+    felhasznalo_id INT NOT NULL,
+    szerep ENUM('adminisztrator', 'tag') DEFAULT 'tag',
+    csatlakozott DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (haztartas_id) REFERENCES haztartas(id),
+    FOREIGN KEY (felhasznalo_id) REFERENCES felhasznalok(id),
+    UNIQUE KEY unique_haztartas_felhasznalo (haztartas_id, felhasznalo_id)
+);
+
+CREATE TABLE IF NOT EXISTS feladatok (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    nev VARCHAR(255) NOT NULL,
+    leiras TEXT NULL,
+    haztartas_id INT NOT NULL,
+    keszitette INT NOT NULL,
+    jelentkezo INT NULL,
+    statusz ENUM('nyitott', 'uj', 'kesz', 'megszakitva') DEFAULT 'uj',
+    fontossag ENUM('alacsony', 'kozepes', 'fontos') DEFAULT 'alacsony',
+    kategoria VARCHAR(100) DEFAULT 'mas',
+    lejarati_datum DATETIME NULL,
+    letrejott DATETIME DEFAULT CURRENT_TIMESTAMP,
+    jelentkezes_ideje DATETIME NULL,
+    befejezes_ideje DATETIME NULL,
+    FOREIGN KEY (haztartas_id) REFERENCES haztartas(id),
+    FOREIGN KEY (keszitette) REFERENCES felhasznalok(id),
+    FOREIGN KEY (jelentkezo) REFERENCES felhasznalok(id)
+);
+
+CREATE TABLE IF NOT EXISTS feladatok_ertekelese (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    feladat_id INT NOT NULL,
+    ertekelt_felhasznalo_id INT NOT NULL,
+    ertekelo_felhasznalo_id INT NOT NULL,
+    ertekeles TINYINT CHECK (ertekeles >= 0 AND ertekeles <= 5),
+    komment TEXT NULL,
+    ertekeles_ideje DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (feladat_id) REFERENCES feladatok(id),
+    FOREIGN KEY (ertekelt_felhasznalo_id) REFERENCES felhasznalok(id),
+    FOREIGN KEY (ertekelo_felhasznalo_id) REFERENCES felhasznalok(id),
+    UNIQUE KEY unique_feladat_ertekeles (feladat_id, ertekelt_felhasznalo_id, ertekelo_felhasznalo_id)
+);
+
+CREATE TABLE IF NOT EXISTS ertesitesek (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    felhasznalo_id INT NOT NULL,
+    cim VARCHAR(255) NOT NULL,
+    uzenet TEXT NOT NULL,
+    tipus ENUM('task_created', 'task_claimed', 'task_completed', 'rating_received', 'system'),
+    olvasatlan_e BOOLEAN DEFAULT FALSE,
+    related_task_id INT NULL,
+    letrehozva DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (felhasznalo_id) REFERENCES felhasznalok(id),
+    FOREIGN KEY (related_task_id) REFERENCES feladatok(id)
+);

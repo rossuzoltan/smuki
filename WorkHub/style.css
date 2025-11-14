@@ -1,0 +1,240 @@
+/*
+Opcionális: header gradient overlay 
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(10, 50, 90, 0.4), rgba(74, 144, 226, 0.4));
+    z-index: -1;
+}
+
+.navbar ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(19, 90, 170, 0.3), rgba(87, 171, 255, 0.3));
+    z-index: -1;
+}
+
+.content {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    margin: 20px auto;
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    color: white;
+}
+
+*/
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url(mini.jpg);
+    background-size: cover;
+    min-height: 100vh;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 10px;
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+h2 {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+.navbar ul {
+   background: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    list-style-type: none;
+    margin: 20px auto;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    max-width: 90%;
+    position: relative;
+    overflow: hidden;
+}
+
+.navbar a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 20px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    position: relative;
+    border-radius: 8px;
+    margin: 2px;
+}
+
+.navbar a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.navbar a:active {
+    transform: translateY(0);
+}
+
+
+header {
+    background: rgba(255, 255, 255, 0.13);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+}
+
+label {
+    color: white;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+#feher-a {
+    color: white;
+}
+
+i {
+    color: white;
+}
+
+a {
+    color: rgb(218, 185, 95);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+h4 {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.feherdoboz {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    width: 500px;
+    height: auto;
+    margin: auto;
+    border-radius: 20px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+
+.centeralis {
+    text-align: center;
+}
+
+.tartalom {
+    margin: 15px;
+    display: block;
+    text-align: left;
+}
+
+.szovegek {
+    padding: 10px;
+}
+
+.szovegek-vege {
+    text-align: right;
+    padding: 10px;
+}
+
+.szovegek-kozep {
+    text-align: center;
+}
+
+.sanyi {
+    display: block;
+    margin: 0 auto;
+    border-radius: 15px;
+    max-width: 100%;
+    height: auto;
+}
+
+/* Sötét mód támogatása */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(mini.jpg);
+    }
+}
+
+/* Reszponzív design */
+@media (max-width: 768px) {
+    .feherdoboz {
+        width: 95%;
+        padding: 15px 10px;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .navbar ul {
+        flex-direction: column;
+        width: 90%;
+    }
+    
+    .navbar a {
+        width: 100%;
+        margin: 5px 0;
+    }
+    
+    .features {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .feature-card {
+        width: 100%;
+        max-width: 300px;
+    }
+    
+    .szovegek-vege {
+        text-align: center;
+    }
+    
+    /* További blur csökkentés mobil eszközökön */
+    header, .navbar ul, .feherdoboz, .content, .feature-card, footer {
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+    }
+}
