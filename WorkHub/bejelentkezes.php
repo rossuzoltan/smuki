@@ -9,17 +9,18 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
     if (isset($_POST["fNevID"], $_POST["jelszoID"])) {
         $beirtFelhasznalo = trim($_POST["fNevID"]);
         $beirtJelszo = $_POST["jelszoID"];
-        
+
         try {
             // Felhasználó keresése az adatbázisban
             $stmt = $pdo->prepare("SELECT id, username, jelszo_hash, email, vezetek_nev, kereszt_nev, is_active FROM felhasznalok WHERE username = ?");
             $stmt->execute([$beirtFelhasznalo]);
             $felhasznalo = $stmt->fetch(PDO::FETCH_ASSOC);
-            
+
             if ($felhasznalo) {
                 $jelszoEgyezik = false;
                 $hash = $felhasznalo['jelszo_hash'];
-                
+                $hashTipus = null;
+
                 // Támogatjuk a plain text és hash-elt jelszavakat is
                 if (password_verify($beirtJelszo, $hash)) {
                     $jelszoEgyezik = true;
@@ -31,8 +32,17 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
                     $jelszoEgyezik = true;
                     $hashTipus = "md5";
                 }
-                
+
                 if ($jelszoEgyezik) {
+                    if ($hashTipus !== "password_hash") {
+                        try {
+                            $ujHash = password_hash($beirtJelszo, PASSWORD_DEFAULT);
+                            $update = $pdo->prepare("UPDATE felhasznalok SET jelszo_hash = ? WHERE id = ?");
+                            $update->execute([$ujHash, $felhasznalo['id']]);
+                        } catch(PDOException $e) {
+                            // Ha a jelszó frissítése sikertelen, ne akadályozza a bejelentkezést, de logolhatnánk.
+                        }
+                    }
                     if ($felhasznalo['is_active'] == 1) {
                         // Sikeres bejelentkezés
                         $_SESSION["felhasznalo_id"] = $felhasznalo['id'];
