@@ -3,7 +3,7 @@ require_once 'adatbazis.php';
 
 // Ellenőrizzük, hogy be van-e jelentkezve a felhasználó
 if (!isset($_SESSION["felhasznalo_id"])) {
-    header("Location: teszt_bejelentkezes.php");
+    header("Location: bejelentkezes.php");
     exit();
 }
 
@@ -14,7 +14,7 @@ try {
     $felhasznalo = $stmt->fetch(PDO::FETCH_ASSOC);
     
     if (!$felhasznalo) {
-        header("Location: teszt_bejelentkezes.php");
+        header("Location: bejelentkezes.php");
         exit();
     }
 } catch(PDOException $e) {
