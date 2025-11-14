@@ -1,5 +1,27 @@
 <?php
-    include("adatbazis.php");
+require_once 'adatbazis.php';
+
+if (!isset($_SESSION["felhasznalo_id"])) {
+    header("Location: bejelentkezes.php");
+    exit();
+}
+
+try {
+    $stmt = $pdo->prepare("SELECT username, email, vezetek_nev, kereszt_nev, profil_kep, letrejott FROM felhasznalok WHERE id = ?");
+    $stmt->execute([$_SESSION["felhasznalo_id"]]);
+    $felhasznalo = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$felhasznalo) {
+        header("Location: bejelentkezes.php");
+        exit();
+    }
+} catch (PDOException $e) {
+    die("Hiba az adatok lekérése során: " . htmlspecialchars($e->getMessage()));
+}
+
+$teljesNev = trim($felhasznalo['vezetek_nev'] . ' ' . $felhasznalo['kereszt_nev']);
+$profilkep = !empty($felhasznalo['profil_kep']) ? $felhasznalo['profil_kep'] : 'pfp.jpg';
+$letrejott = date('Y.m.d. H:i', strtotime($felhasznalo['letrejott']));
 ?>
 
 <!DOCTYPE html>
@@ -32,16 +54,16 @@
             <div id="centeralis">
                 <h2 class="doboz-nev">Profilom</h2>
                     <div class="pfp-doboz">
-                        <img src="pfp.jpg" alt="Avatar" class="avatar">
-                        <div class="user-adat-doboz">    
-                            <label>$username</label><i class="fa-solid fa-user"></i>
+                        <img src="<?php echo htmlspecialchars($profilkep); ?>" alt="Avatar" class="avatar">
+                        <div class="user-adat-doboz">
+                            <label><?php echo htmlspecialchars($teljesNev); ?></label><i class="fa-solid fa-user"></i>
                         </div>
                     </div>
 
-                    <label>$created_at</label>
+                    <label><?php echo htmlspecialchars($letrejott); ?></label>
 
                     <div class="user-adat-doboz">
-                        <label>$email</label>
+                        <label><?php echo htmlspecialchars($felhasznalo['email']); ?></label>
                     </div>
                     
                     <div class="user-adat-ertekeles-doboz">
@@ -66,21 +88,5 @@
     </form>
 </div>
 
-
-<?php
-
-// az adatbazis.php-rol keri el az adatot mert ossze van kotve
-//$felhasznalok = [
-//    ["fNev" => "admin", "jelszo" => "admin"],
-//    ["fNev" => "pista", "jelszo" => "pista"],
-//];
-
-$urlap = "";
-    echo $urlap;
-
- $sql = "INSERT INTO `felhasznalok` (`id`, `username`, `email`, `jelszo_hash`, `vezetek_nev`, `kereszt_nev`, `profil_kep`, `letrejott`, `is_active`) VALUES (\'1\', \'adminisztrator\', \'admin@gmail.com\', \'megaadmin\', \'Admin\', \'Mega\', NULL, current_timestamp(), \'1\');";
-?>
-    
-    
 </body>
 </html>
