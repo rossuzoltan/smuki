@@ -108,12 +108,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["submit"])) {
         </div>
     </form>
 </div>
+<?php endif; ?>
 
-<?php 
+<?php
 if ($hibaUzenet) {
     echo $hibaUzenet;
 }
-endif; 
 ?>
 </body>
 </html>
